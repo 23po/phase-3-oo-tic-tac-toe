@@ -42,7 +42,7 @@ class TicTacToe
     end
 
     def valid_move?(index)
-        if @board[index] && !(@board[index] == "X" || @board[index] == "O")
+        if index.between?(0,8) && !(@board[index] == "X" || @board[index] == "O")
             true
         else
             false
@@ -78,6 +78,20 @@ class TicTacToe
         end
 
 
+    end
+
+    def won?
+        WIN_COMBINATIONS.any? do |combination| 
+            if position_taken?(0) && @board[combination[0]] == @board[combination[1]] && @board[combination[1]] == @board[combination[2]] 
+                return combination
+            else
+                false
+            end
+        end
+    end
+
+    def full?
+        @board.all? {|el| el.all?}
     end
 
 end  
