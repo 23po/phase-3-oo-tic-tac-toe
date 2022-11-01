@@ -91,7 +91,11 @@ class TicTacToe
     end
 
     def full?
-        @board.all? {|el| el.all?}
+       if @board.all? {|i| i == "X" || i == "O" }
+            true
+       else
+        false
+       end
     end
 
 end  
