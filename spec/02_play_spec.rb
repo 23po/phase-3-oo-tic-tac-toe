@@ -1,3 +1,5 @@
+require 'pry'
+
 require_relative '../lib/tic_tac_toe.rb'
 
 describe './lib/tic_tac_toe.rb' do
@@ -65,7 +67,7 @@ describe './lib/tic_tac_toe.rb' do
         allow(game).to receive(:gets).and_return("1", "2", "3")
 
         expect(game).to receive(:draw?).at_least(:twice).and_return(false, false, true)
-
+        # binding.pry
         game.play
       end
 
